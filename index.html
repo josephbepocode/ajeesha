@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey Ajeesha 🌸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose: #c9748a;
+      --blush: #f7dce2;
+      --gold: #c9a96e;
+      --cream: #fdf6f0;
+      --dark: #3d2b35;
+    }
+
+    body {
+      background: var(--cream);
+      font-family: 'Lato', sans-serif;
+      color: var(--dark);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── Petals ── */
+    .petals {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -60px;
+      font-size: 1.4rem;
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.8; }
+      50%  { transform: translateY(50vh) rotate(180deg) translateX(30px); }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(-20px); opacity: 0; }
+    }
+
+    /* ── Layout ── */
+    main { position: relative; z-index: 1; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: linear-gradient(160deg, #fce8ee 0%, #fdf6f0 60%, #f5ede4 100%);
+    }
+    .hero-sub {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--rose);
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { color: var(--rose); font-style: italic; }
+    .hero p {
+      max-width: 520px;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      color: #6b4f5b;
+      margin-bottom: 2.5rem;
+    }
+    .scroll-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--rose);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint span { font-size: 1.4rem; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(8px); }
+    }
+
+    /* ── Section shell ── */
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    .section-body {
+      color: #6b4f5b;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      text-align: center;
+      color: var(--rose);
+      font-size: 1.3rem;
+      letter-spacing: 1rem;
+      margin: 0 auto;
+      opacity: 0.4;
+    }
+
+    /* ── Instagram gallery band ── */
+    .ig-section {
+      background: linear-gradient(135deg, #f9eef2, #fdf6f0);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .ig-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin: 2.5rem 0;
+      align-items: start;
+    }
+    @media (max-width: 640px) {
+      .ig-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+    }
+    .ig-grid .instagram-media {
+      margin: 0 auto !important;
+      min-width: unset !important;
+      width: 100% !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 30px rgba(201,116,138,0.15) !important;
+    }
+
+    .ig-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-family: 'Lato', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(220,39,67,0.3);
+    }
+    .ig-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(220,39,67,0.4); }
+
+    /* ── Date Form ── */
+    .form-section {
+      background: white;
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 60px rgba(201,116,138,0.1);
+      margin: 0 auto;
+      max-width: 700px;
+    }
+    .form-section .section-title { text-align: center; }
+    .form-section .section-body  { text-align: center; }
+
+    .date-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 540px) { .date-options { grid-template-columns: 1fr; } }
+
+    .date-card {
+      border: 2px solid #f0dce3;
+      border-radius: 16px;
+      padding: 1.4rem 1rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      text-align: center;
+      background: var(--cream);
+      position: relative;
+    }
+    .date-card:hover {
+      border-color: var(--rose);
+      background: #fff5f7;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(201,116,138,0.15);
+    }
+    .date-card.selected {
+      border-color: var(--rose);
+      background: linear-gradient(135deg, #fff0f4, #fdf6f0);
+      box-shadow: 0 8px 24px rgba(201,116,138,0.2);
+    }
+    .date-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 0.5rem; right: 0.75rem;
+      color: var(--rose);
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .date-card .emoji { font-size: 2.2rem; margin-bottom: 0.6rem; }
+    .date-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .date-card p {
+      font-size: 0.8rem;
+      color: #9a7080;
+      line-height: 1.5;
+    }
+
+    /* 5th card centred when odd */
+    .date-options .date-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .name-input-wrap {
+      margin: 1.5rem 0 0.5rem;
+    }
+    .name-input-wrap label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.5rem;
+    }
+    .name-input-wrap input {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 2px solid #f0dce3;
+      border-radius: 12px;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      background: var(--cream);
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .name-input-wrap input:focus { border-color: var(--rose); background: white; }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 2rem;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--rose), #b05570);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 24px rgba(201,116,138,0.35);
+      letter-spacing: 0.03em;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,116,138,0.45); }
+    .submit-btn:active { transform: scale(0.98); }
+
+    /* ── Thank-you overlay ── */
+    #thankyou {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(253,246,240,0.97);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+    }
+    #thankyou.show { display: flex; }
+    #thankyou h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: var(--rose);
+      margin-bottom: 1rem;
+    }
+    #thankyou p {
+      font-size: 1.1rem;
+      color: #6b4f5b;
+      max-width: 400px;
+      line-height: 1.8;
+    }
+    .confetti-burst { font-size: 4rem; margin-bottom: 1.5rem; animation: pop 0.5s ease; }
+    @keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.8rem;
+      color: #c9a0b0;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Fade-in on scroll ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- Floating petals -->
+<div class="petals" id="petals"></div>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <p class="hero-sub">A little something for you</p>
+    <h1>Hey <em>Ajeesha</em>,<br>can I take you<br>on a date? 🌸</h1>
+    <p>
+      I've been meaning to ask you this for a while now —
+      so I built this little page because a simple text just
+      didn't feel like enough. Scroll down, have a look around,
+      and let me know what you think?
+    </p>
+    <div class="scroll-hint">
+      <span>↓</span>
+      keep scrolling
+    </div>
+  </div>
+
+  <!-- ── WHY YOU ── -->
+  <section class="fade-in">
+    <p class="section-label">A little note</p>
+    <h2 class="section-title">You're kind of unforgettable.</h2>
+    <p class="section-body">
+      There's something about the way you carry yourself — warm, effortless,
+      genuinely one of a kind. I'd love the chance to get to know you better,
+      share a good meal, maybe see the city through your eyes for an evening.
+      No pressure, just good vibes and great company.
+    </p>
+    <div class="divider">✦ ✦ ✦</div>
+  </section>
+
+  <!-- ── INSTAGRAM GALLERY ── -->
+  <div class="ig-section fade-in">
+    <div class="ig-inner">
+      <p class="section-label">From your feed</p>
+      <h2 class="section-title">Because your aesthetic is everything.</h2>
+      <p class="section-body" style="max-width:560px;margin:0 auto 0;">
+        A few gorgeous shots — straight from <strong>@ajeesha.ong</strong>.
+        Click below to see the full gallery.
+      </p>
+
+      <!-- Her actual Instagram posts -->
+      <div class="ig-grid">
+
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DXdZFjXDHbO/"
+          data-instgrm-version="14"
+          style="background:#FFF; border:0; border-radius:16px; box-shadow:0 8px 30px rgba(201,116,138,0.15); margin:0 auto; max-width:100%; min-width:0; padding:0; width:100%;">
+        </blockquote>
+
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DIh5FaWgbA_/"
+          data-instgrm-version="14"
+          style="background:#FFF; border:0; border-radius:16px; box-shadow:0 8px 30px rgba(201,116,138,0.15); margin:0 auto; max-width:100%; min-width:0; padding:0; width:100%;">
+        </blockquote>
+
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/C5xIItVA-zn/"
+          data-instgrm-version="14"
+          style="background:#FFF; border:0; border-radius:16px; box-shadow:0 8px 30px rgba(201,116,138,0.15); margin:0 auto; max-width:100%; min-width:0; padding:0; width:100%;">
+        </blockquote>
+
+      </div>
+      <script async src="https://www.instagram.com/embed.js"></script>
+
+      <a class="ig-cta-btn" href="https://www.instagram.com/ajeesha.ong/" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        View @ajeesha.ong on Instagram
+      </a>
+    </div>
+  </div>
+
+  <!-- ── DATE FORM ── -->
+  <section style="padding: 5rem 1.5rem;">
+    <div class="form-section fade-in">
+      <p class="section-label" style="text-align:center;">The important question</p>
+      <h2 class="section-title">So… what sounds fun to you?</h2>
+      <p class="section-body">
+        Pick the date idea that sounds most like your vibe —
+        no wrong answers, I'm just happy you're here. 💕
+      </p>
+
+      <div class="date-options" id="dateOptions">
+
+        <div class="date-card" onclick="selectDate(this)">
+          <div class="emoji">🌊</div>
+          <h3>Beach Golden Hour</h3>
+          <p>Walk along the shore, watch the sun melt into the sea, maybe grab some fresh coconut water.</p>
+        </div>
+
+        <div class="date-card" onclick="selectDate(this)">
+          <div class="emoji">🍽️</div>
+          <h3>Rooftop Dinner</h3>
+          <p>A lovely restaurant with city views, good food, even better conversation, and fairy lights above us.</p>
+        </div>
+
+        <div class="date-card" onclick="selectDate(this)">
+          <div class="emoji">🎨</div>
+          <h3>Art & Coffee Crawl</h3>
+          <p>Wander through a gallery or two, find a cosy café, share ideas and maybe a croissant.</p>
+        </div>
+
+        <div class="date-card" onclick="selectDate(this)">
+          <div class="emoji">🌿</div>
+          <h3>Botanical Garden Stroll</h3>
+          <p>Flowers, green paths, good lighting for photos, and no pressure — just easy, relaxed fun.</p>
+        </div>
+
+        <div class="date-card" onclick="selectDate(this)">
+          <div class="emoji">🎬</div>
+          <h3>Movie Night + Dessert</h3>
+          <p>Pick a film, grab some amazing dessert, and argue about who had the better snack choice.</p>
+        </div>
+
+      </div>
+
+      <div class="name-input-wrap">
+        <label for="yourName">Your answer (type yes, maybe, or… yes 😄)</label>
+        <input type="text" id="yourName" placeholder="Type something here..." />
+      </div>
+
+      <button class="submit-btn" onclick="submitForm()">Send My Answer 💌</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- Thank you overlay -->
+<div id="thankyou">
+  <div class="confetti-burst">🌸</div>
+  <h2>You made my day.</h2>
+  <p id="thankyouMsg">Thank you for saying yes — I'll be in touch soon. This is going to be so fun. 💕</p>
+</div>
+
+<footer>
+  Made with love, just for you &nbsp;·&nbsp; @ajeesha.ong
+</footer>
+
+<script>
+  // ── Petals ──
+  const petalEmojis = ['🌸','🌺','✿','🌹','🌷'];
+  const container = document.getElementById('petals');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (6 + Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.fontSize = (0.9 + Math.random() * 1) + 'rem';
+    container.appendChild(p);
+  }
+
+  // ── Date card selection ──
+  let selectedDate = null;
+  function selectDate(el) {
+    document.querySelectorAll('.date-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedDate = el.querySelector('h3').textContent;
+  }
+
+  // ── Submit ──
+  function submitForm() {
+    const answer = document.getElementById('yourName').value.trim();
+    const ty = document.getElementById('thankyou');
+    const msg = document.getElementById('thankyouMsg');
+
+    const lc = answer.toLowerCase();
+    if (lc.includes('no') || lc === 'n') {
+      msg.textContent = "Okay, I respect it! But the door's always open. 🌸";
+    } else if (selectedDate) {
+      msg.textContent = `${selectedDate} it is! I'll make sure it's a day worth remembering. 💕`;
+    } else {
+      msg.textContent = "Can't wait to make this happen. I'll reach out soon! 💕";
+    }
+
+    ty.classList.add('show');
+    spawnConfetti();
+  }
+
+  // ── Simple confetti burst ──
+  function spawnConfetti() {
+    const ty = document.getElementById('thankyou');
+    const symbols = ['🌸','✨','💕','🌺','💫','🎀'];
+    for (let i = 0; i < 30; i++) {
+      const c = document.createElement('div');
+      c.style.cssText = `
+        position:fixed;
+        left:${Math.random()*100}vw;
+        top:${Math.random()*100}vh;
+        font-size:${1+Math.random()*1.5}rem;
+        pointer-events:none;
+        animation: fadePop 1.5s ease forwards;
+        z-index:1000;
+      `;
+      c.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 1600);
+    }
+  }
+
+  // CSS for confetti animation injected once
+  const st = document.createElement('style');
+  st.textContent = `@keyframes fadePop {
+    0%   { opacity:1; transform: scale(0) translateY(0); }
+    60%  { opacity:1; transform: scale(1.4) translateY(-20px); }
+    100% { opacity:0; transform: scale(1) translateY(-60px); }
+  }`;
+  document.head.appendChild(st);
+
+  // ── Fade-in on scroll ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
