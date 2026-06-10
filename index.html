@@ -2,572 +2,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hey Ajeesha 🌸</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Ajeesha 💋</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#ff2566;
+  --pink2:#ff6b9d;
+  --dark:#08080f;
+  --dark2:#0f0f1a;
+  --white:#f0f0f8;
+  --sub:#6e6e8a;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--dark);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+}
 
-    :root {
-      --rose: #c9748a;
-      --blush: #f7dce2;
-      --gold: #c9a96e;
-      --cream: #fdf6f0;
-      --dark: #3d2b35;
-    }
+/* ── CANVAS STARS ── */
+#stars{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-    body {
-      background: var(--cream);
-      font-family: 'Lato', sans-serif;
-      color: var(--dark);
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+/* ── SECTIONS ── */
+section,div.block{position:relative;z-index:1}
 
-    /* ── Petals ── */
-    .petals {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .petal {
-      position: absolute;
-      top: -60px;
-      font-size: 1.4rem;
-      animation: fall linear infinite;
-      opacity: 0.7;
-    }
-    @keyframes fall {
-      0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.8; }
-      50%  { transform: translateY(50vh) rotate(180deg) translateX(30px); }
-      100% { transform: translateY(110vh) rotate(360deg) translateX(-20px); opacity: 0; }
-    }
+/* ════════════════════════
+   HERO
+════════════════════════ */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:2rem 1.5rem;
+}
+.hero-eyebrow{
+  font-size:.7rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--pink);margin-bottom:1.5rem;
+  font-weight:500;
+}
+.hero-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,18vw,14rem);
+  line-height:.9;
+  background:linear-gradient(135deg,#fff 30%,var(--pink) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:1rem;
+  letter-spacing:.02em;
+}
+.hero-question{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.5rem,5vw,3.5rem);
+  letter-spacing:.15em;
+  color:var(--white);
+  opacity:.9;
+  margin-bottom:3rem;
+}
+.hero-question em{color:var(--pink);font-style:normal}
+.scroll-cue{
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:var(--sub);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  animation:nudge 2s ease-in-out infinite;
+}
+.scroll-cue svg{opacity:.5}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-    /* ── Layout ── */
-    main { position: relative; z-index: 1; }
+/* ════════════════════════
+   WHY
+════════════════════════ */
+.why-block{
+  max-width:700px;margin:0 auto;
+  padding:8rem 2rem;
+  text-align:center;
+}
+.label{
+  font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--pink);margin-bottom:1.2rem;font-weight:500;
+}
+.why-block h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2.5rem,6vw,5rem);
+  line-height:1;letter-spacing:.05em;
+  color:var(--white);
+  margin-bottom:1.8rem;
+}
+.why-block p{
+  font-size:1.05rem;line-height:1.85;
+  color:#a0a0c0;
+  font-weight:300;
+}
+.pink-line{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,var(--pink),transparent);
+  margin:3rem auto;
+}
 
-    /* ── Hero ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 3rem 1.5rem;
-      background: linear-gradient(160deg, #fce8ee 0%, #fdf6f0 60%, #f5ede4 100%);
-    }
-    .hero-sub {
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      color: var(--rose);
-      margin-bottom: 1.2rem;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 8vw, 6rem);
-      color: var(--dark);
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 em { color: var(--rose); font-style: italic; }
-    .hero p {
-      max-width: 520px;
-      line-height: 1.8;
-      font-size: 1.05rem;
-      color: #6b4f5b;
-      margin-bottom: 2.5rem;
-    }
-    .scroll-hint {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--rose);
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      animation: bounce 2s infinite;
-    }
-    .scroll-hint span { font-size: 1.4rem; }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(8px); }
-    }
+/* ════════════════════════
+   INSTAGRAM STRIP
+════════════════════════ */
+.ig-block{
+  padding:6rem 0;
+  overflow:hidden;
+}
+.ig-block .label{text-align:center;margin-bottom:.5rem}
+.ig-block h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(2rem,5vw,4rem);letter-spacing:.05em;
+  text-align:center;color:var(--white);margin-bottom:3rem;
+}
+.ig-strip{
+  display:flex;gap:1.5rem;
+  padding:0 2rem;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.ig-strip::-webkit-scrollbar{height:4px}
+.ig-strip::-webkit-scrollbar-track{background:transparent}
+.ig-strip::-webkit-scrollbar-thumb{background:var(--pink);border-radius:2px}
+.ig-post{
+  flex:0 0 300px;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,37,102,.2);
+  transition:transform .3s,box-shadow .3s;
+}
+.ig-post:hover{
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 20px 60px rgba(255,37,102,.25);
+}
+.ig-post .instagram-media{
+  margin:0!important;min-width:unset!important;
+  width:300px!important;border-radius:0!important;
+}
+.ig-footer{
+  text-align:center;margin-top:2.5rem;
+}
+.ig-link{
+  display:inline-flex;align-items:center;gap:.6rem;
+  color:var(--pink);text-decoration:none;
+  font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  border-bottom:1px solid rgba(255,37,102,.3);
+  padding-bottom:2px;
+  transition:border-color .2s,color .2s;
+}
+.ig-link:hover{color:var(--pink2);border-color:var(--pink2)}
 
-    /* ── Section shell ── */
-    section {
-      padding: 5rem 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .section-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.6rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      color: var(--dark);
-      margin-bottom: 1rem;
-    }
-    .section-body {
-      color: #6b4f5b;
-      line-height: 1.8;
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
+/* ════════════════════════
+   THE QUESTION
+════════════════════════ */
+.q-block{
+  max-width:800px;margin:0 auto;
+  padding:8rem 2rem;
+  text-align:center;
+}
+.q-block h2{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,9vw,7rem);
+  letter-spacing:.06em;line-height:.95;
+  margin-bottom:.5rem;
+}
+.q-block h2 span{color:var(--pink)}
+.q-block .sub{
+  font-size:1rem;color:var(--sub);
+  font-weight:300;margin-bottom:4rem;letter-spacing:.02em;
+}
 
-    /* ── Divider ── */
-    .divider {
-      text-align: center;
-      color: var(--rose);
-      font-size: 1.3rem;
-      letter-spacing: 1rem;
-      margin: 0 auto;
-      opacity: 0.4;
-    }
+/* answer buttons */
+.answer-row{
+  display:flex;gap:1.2rem;justify-content:center;
+  flex-wrap:wrap;margin-bottom:3rem;
+}
+.ans-btn{
+  position:relative;overflow:hidden;
+  padding:1.2rem 2.8rem;
+  border-radius:4px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;letter-spacing:.1em;
+  cursor:pointer;border:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.ans-btn::before{
+  content:'';position:absolute;inset:0;
+  opacity:0;transition:opacity .2s;
+  background:rgba(255,255,255,.1);
+}
+.ans-btn:hover::before{opacity:1}
+.ans-btn:hover{transform:translateY(-3px)}
+.ans-btn:active{transform:scale(.97)}
+.ans-yes{
+  background:linear-gradient(135deg,var(--pink),#c4004a);
+  color:#fff;
+  box-shadow:0 0 40px rgba(255,37,102,.4);
+}
+.ans-yes:hover{box-shadow:0 0 60px rgba(255,37,102,.7)}
+.ans-maybe{
+  background:transparent;
+  color:var(--white);
+  border:2px solid rgba(240,240,248,.25)!important;
+  box-shadow:none;
+}
+.ans-maybe:hover{border-color:rgba(240,240,248,.6)!important}
+.ans-no{
+  background:transparent;
+  color:var(--sub);
+  border:2px solid rgba(110,110,138,.2)!important;
+}
+.ans-no:hover{border-color:rgba(110,110,138,.5)!important}
 
-    /* ── Instagram gallery band ── */
-    .ig-section {
-      background: linear-gradient(135deg, #f9eef2, #fdf6f0);
-      padding: 5rem 1.5rem;
-      text-align: center;
-    }
-    .ig-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .ig-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-      margin: 2.5rem 0;
-      align-items: start;
-    }
-    @media (max-width: 640px) {
-      .ig-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
-    }
-    .ig-grid .instagram-media {
-      margin: 0 auto !important;
-      min-width: unset !important;
-      width: 100% !important;
-      border-radius: 16px !important;
-      box-shadow: 0 8px 30px rgba(201,116,138,0.15) !important;
-    }
+.ans-btn.selected{outline:3px solid var(--pink);outline-offset:3px}
+.ans-btn.selected.ans-maybe{outline-color:var(--white)}
+.ans-btn.selected.ans-no{outline-color:var(--sub)}
 
-    .ig-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      color: white;
-      border: none;
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-family: 'Lato', sans-serif;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 400;
-      letter-spacing: 0.05em;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(220,39,67,0.3);
-    }
-    .ig-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(220,39,67,0.4); }
+/* date picker */
+.date-picker{
+  display:none;
+  border-top:1px solid rgba(255,37,102,.15);
+  padding-top:3rem;
+  margin-top:1rem;
+  text-align:left;
+}
+.date-picker.show{display:block}
+.date-picker .dp-label{
+  font-size:.65rem;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--pink);margin-bottom:1.5rem;text-align:center;font-weight:500;
+}
+.date-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:.8rem;
+  margin-bottom:2rem;
+}
+@media(max-width:500px){.date-grid{grid-template-columns:1fr}}
+.d-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:8px;padding:1.2rem 1rem;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:flex-start;gap:.8rem;
+}
+.d-card:hover{background:rgba(255,37,102,.08);border-color:rgba(255,37,102,.3)}
+.d-card.selected{background:rgba(255,37,102,.1);border-color:var(--pink)}
+.d-card .dico{font-size:1.5rem;flex-shrink:0;margin-top:1px}
+.d-card h4{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
+.d-card p{font-size:.75rem;color:var(--sub);line-height:1.5}
+.d-card:last-child:nth-child(odd){grid-column:1/-1;max-width:260px;margin:0 auto}
 
-    /* ── Date Form ── */
-    .form-section {
-      background: white;
-      border-radius: 24px;
-      padding: 3rem 2.5rem;
-      box-shadow: 0 20px 60px rgba(201,116,138,0.1);
-      margin: 0 auto;
-      max-width: 700px;
-    }
-    .form-section .section-title { text-align: center; }
-    .form-section .section-body  { text-align: center; }
+/* note */
+.note-wrap{margin-bottom:2rem}
+.note-wrap label{
+  display:block;font-size:.65rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--sub);margin-bottom:.6rem;font-weight:500;
+}
+.note-wrap textarea{
+  width:100%;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;padding:.9rem 1rem;
+  color:var(--white);font-family:'Inter',sans-serif;
+  font-size:.9rem;resize:vertical;min-height:90px;outline:none;
+  transition:border-color .2s;
+}
+.note-wrap textarea:focus{border-color:rgba(255,37,102,.5)}
 
-    .date-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-    @media (max-width: 540px) { .date-options { grid-template-columns: 1fr; } }
+/* send button */
+.send-btn{
+  display:none;
+  width:100%;padding:1.2rem;
+  background:linear-gradient(135deg,var(--pink),#c4004a);
+  color:#fff;border:none;border-radius:4px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.8rem;letter-spacing:.15em;
+  cursor:pointer;
+  transition:box-shadow .2s,transform .2s;
+  box-shadow:0 0 40px rgba(255,37,102,.4);
+}
+.send-btn.show{display:block}
+.send-btn:hover{box-shadow:0 0 70px rgba(255,37,102,.7);transform:translateY(-2px)}
+.send-btn:active{transform:scale(.98)}
+.send-note{
+  display:none;text-align:center;
+  font-size:.7rem;color:var(--sub);
+  margin-top:.8rem;letter-spacing:.05em;
+}
+.send-note.show{display:block}
 
-    .date-card {
-      border: 2px solid #f0dce3;
-      border-radius: 16px;
-      padding: 1.4rem 1rem;
-      cursor: pointer;
-      transition: all 0.25s;
-      text-align: center;
-      background: var(--cream);
-      position: relative;
-    }
-    .date-card:hover {
-      border-color: var(--rose);
-      background: #fff5f7;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(201,116,138,0.15);
-    }
-    .date-card.selected {
-      border-color: var(--rose);
-      background: linear-gradient(135deg, #fff0f4, #fdf6f0);
-      box-shadow: 0 8px 24px rgba(201,116,138,0.2);
-    }
-    .date-card.selected::after {
-      content: '✓';
-      position: absolute;
-      top: 0.5rem; right: 0.75rem;
-      color: var(--rose);
-      font-size: 1rem;
-      font-weight: bold;
-    }
-    .date-card .emoji { font-size: 2.2rem; margin-bottom: 0.6rem; }
-    .date-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      color: var(--dark);
-      margin-bottom: 0.35rem;
-    }
-    .date-card p {
-      font-size: 0.8rem;
-      color: #9a7080;
-      line-height: 1.5;
-    }
+/* ════════════════════════
+   OVERLAY
+════════════════════════ */
+#overlay{
+  display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(8,8,15,.96);
+  align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;padding:2rem;
+}
+#overlay.show{display:flex}
+#overlay .big{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3rem,10vw,8rem);letter-spacing:.05em;
+  line-height:1;
+  background:linear-gradient(135deg,#fff 30%,var(--pink));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:1rem;
+}
+#overlay p{
+  font-size:1.1rem;color:#a0a0c0;
+  max-width:380px;line-height:1.7;font-weight:300;
+}
+#overlay .close-hint{
+  margin-top:2.5rem;font-size:.7rem;
+  color:var(--sub);letter-spacing:.3em;text-transform:uppercase;
+  cursor:pointer;border-bottom:1px solid rgba(110,110,138,.3);padding-bottom:2px;
+}
+#overlay .close-hint:hover{color:var(--white)}
 
-    /* 5th card centred when odd */
-    .date-options .date-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    .name-input-wrap {
-      margin: 1.5rem 0 0.5rem;
-    }
-    .name-input-wrap label {
-      display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 0.5rem;
-    }
-    .name-input-wrap input {
-      width: 100%;
-      padding: 0.8rem 1.2rem;
-      border: 2px solid #f0dce3;
-      border-radius: 12px;
-      font-family: 'Lato', sans-serif;
-      font-size: 1rem;
-      background: var(--cream);
-      color: var(--dark);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .name-input-wrap input:focus { border-color: var(--rose); background: white; }
-
-    .submit-btn {
-      width: 100%;
-      margin-top: 2rem;
-      padding: 1rem;
-      background: linear-gradient(135deg, var(--rose), #b05570);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      font-style: italic;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 6px 24px rgba(201,116,138,0.35);
-      letter-spacing: 0.03em;
-    }
-    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,116,138,0.45); }
-    .submit-btn:active { transform: scale(0.98); }
-
-    /* ── Thank-you overlay ── */
-    #thankyou {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(253,246,240,0.97);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 2rem;
-    }
-    #thankyou.show { display: flex; }
-    #thankyou h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 6vw, 4rem);
-      color: var(--rose);
-      margin-bottom: 1rem;
-    }
-    #thankyou p {
-      font-size: 1.1rem;
-      color: #6b4f5b;
-      max-width: 400px;
-      line-height: 1.8;
-    }
-    .confetti-burst { font-size: 4rem; margin-bottom: 1.5rem; animation: pop 0.5s ease; }
-    @keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      font-size: 0.8rem;
-      color: #c9a0b0;
-      letter-spacing: 0.1em;
-    }
-
-    /* ── Fade-in on scroll ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: none; }
-  </style>
+footer{
+  text-align:center;padding:4rem 1rem 2rem;
+  font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;
+  color:rgba(110,110,138,.4);position:relative;z-index:1;
+}
+</style>
 </head>
 <body>
 
-<!-- Floating petals -->
-<div class="petals" id="petals"></div>
+<canvas id="stars"></canvas>
 
-<main>
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <p class="hero-eyebrow">For someone special</p>
+  <h1 class="hero-name">AJEESHA</h1>
+  <p class="hero-question">Will you be <em>my girlfriend?</em></p>
+  <div class="scroll-cue">
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+      <rect x="1" y="1" width="14" height="22" rx="7" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="8" cy="7" r="2" fill="currentColor">
+        <animate attributeName="cy" values="7;14;7" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+    scroll
+  </div>
+</section>
 
-  <!-- ── HERO ── -->
-  <div class="hero">
-    <p class="hero-sub">A little something for you</p>
-    <h1>Hey <em>Ajeesha</em>,<br>can I take you<br>on a date? 🌸</h1>
+<!-- ═══ WHY ═══ -->
+<div class="block">
+  <div class="why-block">
+    <p class="label">A little honesty</p>
+    <h2>YOU STAY ON MY MIND.</h2>
     <p>
-      I've been meaning to ask you this for a while now —
-      so I built this little page because a simple text just
-      didn't feel like enough. Scroll down, have a look around,
-      and let me know what you think?
+      I've thought about how to say this for a while.
+      There's something about you — the way you move, the way you see the world —
+      that I can't stop thinking about. I don't want to wonder anymore.
+      I want to be yours, and I want you to be mine.
     </p>
-    <div class="scroll-hint">
-      <span>↓</span>
-      keep scrolling
-    </div>
+    <div class="pink-line"></div>
   </div>
-
-  <!-- ── WHY YOU ── -->
-  <section class="fade-in">
-    <p class="section-label">A little note</p>
-    <h2 class="section-title">You're kind of unforgettable.</h2>
-    <p class="section-body">
-      There's something about the way you carry yourself — warm, effortless,
-      genuinely one of a kind. I'd love the chance to get to know you better,
-      share a good meal, maybe see the city through your eyes for an evening.
-      No pressure, just good vibes and great company.
-    </p>
-    <div class="divider">✦ ✦ ✦</div>
-  </section>
-
-  <!-- ── INSTAGRAM GALLERY ── -->
-  <div class="ig-section fade-in">
-    <div class="ig-inner">
-      <p class="section-label">From your feed</p>
-      <h2 class="section-title">Because your aesthetic is everything.</h2>
-      <p class="section-body" style="max-width:560px;margin:0 auto 0;">
-        A few gorgeous shots — straight from <strong>@ajeesha.ong</strong>.
-        Click below to see the full gallery.
-      </p>
-
-      <!-- Her actual Instagram posts -->
-      <div class="ig-grid">
-
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DXdZFjXDHbO/"
-          data-instgrm-version="14"
-          style="background:#FFF; border:0; border-radius:16px; box-shadow:0 8px 30px rgba(201,116,138,0.15); margin:0 auto; max-width:100%; min-width:0; padding:0; width:100%;">
-        </blockquote>
-
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/DIh5FaWgbA_/"
-          data-instgrm-version="14"
-          style="background:#FFF; border:0; border-radius:16px; box-shadow:0 8px 30px rgba(201,116,138,0.15); margin:0 auto; max-width:100%; min-width:0; padding:0; width:100%;">
-        </blockquote>
-
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/p/C5xIItVA-zn/"
-          data-instgrm-version="14"
-          style="background:#FFF; border:0; border-radius:16px; box-shadow:0 8px 30px rgba(201,116,138,0.15); margin:0 auto; max-width:100%; min-width:0; padding:0; width:100%;">
-        </blockquote>
-
-      </div>
-      <script async src="https://www.instagram.com/embed.js"></script>
-
-      <a class="ig-cta-btn" href="https://www.instagram.com/ajeesha.ong/" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-        View @ajeesha.ong on Instagram
-      </a>
-    </div>
-  </div>
-
-  <!-- ── DATE FORM ── -->
-  <section style="padding: 5rem 1.5rem;">
-    <div class="form-section fade-in">
-      <p class="section-label" style="text-align:center;">The important question</p>
-      <h2 class="section-title">So… what sounds fun to you?</h2>
-      <p class="section-body">
-        Pick the date idea that sounds most like your vibe —
-        no wrong answers, I'm just happy you're here. 💕
-      </p>
-
-      <div class="date-options" id="dateOptions">
-
-        <div class="date-card" onclick="selectDate(this)">
-          <div class="emoji">🌊</div>
-          <h3>Beach Golden Hour</h3>
-          <p>Walk along the shore, watch the sun melt into the sea, maybe grab some fresh coconut water.</p>
-        </div>
-
-        <div class="date-card" onclick="selectDate(this)">
-          <div class="emoji">🍽️</div>
-          <h3>Rooftop Dinner</h3>
-          <p>A lovely restaurant with city views, good food, even better conversation, and fairy lights above us.</p>
-        </div>
-
-        <div class="date-card" onclick="selectDate(this)">
-          <div class="emoji">🎨</div>
-          <h3>Art & Coffee Crawl</h3>
-          <p>Wander through a gallery or two, find a cosy café, share ideas and maybe a croissant.</p>
-        </div>
-
-        <div class="date-card" onclick="selectDate(this)">
-          <div class="emoji">🌿</div>
-          <h3>Botanical Garden Stroll</h3>
-          <p>Flowers, green paths, good lighting for photos, and no pressure — just easy, relaxed fun.</p>
-        </div>
-
-        <div class="date-card" onclick="selectDate(this)">
-          <div class="emoji">🎬</div>
-          <h3>Movie Night + Dessert</h3>
-          <p>Pick a film, grab some amazing dessert, and argue about who had the better snack choice.</p>
-        </div>
-
-      </div>
-
-      <div class="name-input-wrap">
-        <label for="yourName">Your answer (type yes, maybe, or… yes 😄)</label>
-        <input type="text" id="yourName" placeholder="Type something here..." />
-      </div>
-
-      <button class="submit-btn" onclick="submitForm()">Send My Answer 💌</button>
-    </div>
-  </section>
-
-</main>
-
-<!-- Thank you overlay -->
-<div id="thankyou">
-  <div class="confetti-burst">🌸</div>
-  <h2>You made my day.</h2>
-  <p id="thankyouMsg">Thank you for saying yes — I'll be in touch soon. This is going to be so fun. 💕</p>
 </div>
 
-<footer>
-  Made with love, just for you &nbsp;·&nbsp; @ajeesha.ong
-</footer>
+<!-- ═══ INSTAGRAM ═══ -->
+<div class="block ig-block">
+  <p class="label">@ajeesha.ong</p>
+  <h2>YOU'RE EVERYTHING.</h2>
+  <div class="ig-strip">
+    <div class="ig-post">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DXdZFjXDHbO/"
+        data-instgrm-version="14"
+        style="background:#0f0f1a;border:0;margin:0 auto;min-width:unset;padding:0;width:300px;">
+      </blockquote>
+    </div>
+    <div class="ig-post">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/DIh5FaWgbA_/"
+        data-instgrm-version="14"
+        style="background:#0f0f1a;border:0;margin:0 auto;min-width:unset;padding:0;width:300px;">
+      </blockquote>
+    </div>
+    <div class="ig-post">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/C5xIItVA-zn/"
+        data-instgrm-version="14"
+        style="background:#0f0f1a;border:0;margin:0 auto;min-width:unset;padding:0;width:300px;">
+      </blockquote>
+    </div>
+  </div>
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <div class="ig-footer">
+    <a class="ig-link" href="https://www.instagram.com/ajeesha.ong/" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      See full gallery
+    </a>
+  </div>
+</div>
+
+<!-- ═══ THE QUESTION ═══ -->
+<div class="block">
+  <div class="q-block">
+    <p class="label">The only question that matters</p>
+    <h2>SO WHAT<br>DO YOU <span>SAY?</span></h2>
+    <p class="sub">Tap your answer — no wrong choices here.</p>
+
+    <div class="answer-row">
+      <button class="ans-btn ans-yes"   onclick="pick('yes',this)">YES 💋</button>
+      <button class="ans-btn ans-maybe" onclick="pick('maybe',this)">MAYBE…</button>
+      <button class="ans-btn ans-no"    onclick="pick('no',this)">NOT YET</button>
+    </div>
+
+    <!-- Date picker (yes / maybe only) -->
+    <div class="date-picker" id="datePicker">
+      <p class="dp-label">If yes — pick our first date 🔥</p>
+      <div class="date-grid">
+        <div class="d-card" onclick="pickDate(this)">
+          <span class="dico">🌊</span>
+          <div><h4>Beach Golden Hour</h4><p>Shore walk, sunset, coconut water — no plans, just vibes.</p></div>
+        </div>
+        <div class="d-card" onclick="pickDate(this)">
+          <span class="dico">🍽️</span>
+          <div><h4>Rooftop Dinner</h4><p>City views, fairy lights, great food and better conversation.</p></div>
+        </div>
+        <div class="d-card" onclick="pickDate(this)">
+          <span class="dico">🎨</span>
+          <div><h4>Art & Coffee Crawl</h4><p>Gallery, cosy café, croissant, and sharing ideas for hours.</p></div>
+        </div>
+        <div class="d-card" onclick="pickDate(this)">
+          <span class="dico">🌿</span>
+          <div><h4>Botanical Stroll</h4><p>Flowers, green paths, great photos, no rush at all.</p></div>
+        </div>
+        <div class="d-card" onclick="pickDate(this)">
+          <span class="dico">🎬</span>
+          <div><h4>Movie + Dessert</h4><p>Your pick of film, way too much dessert, argue about snacks.</p></div>
+        </div>
+      </div>
+      <div class="note-wrap">
+        <label>Want to say something? (optional)</label>
+        <textarea id="noteBox" placeholder="Type anything…"></textarea>
+      </div>
+    </div>
+
+    <button class="send-btn" id="sendBtn" onclick="sendAnswer()">SEND MY ANSWER →</button>
+    <p class="send-note" id="sendNote">Opens your email app — pre-written and ready to send ✉️</p>
+  </div>
+</div>
+
+<!-- ═══ OVERLAY ═══ -->
+<div id="overlay">
+  <div class="big" id="overlayBig">YOU MADE MY DAY.</div>
+  <p id="overlayMsg">Your answer is on its way. 💕</p>
+  <span class="close-hint" onclick="document.getElementById('overlay').classList.remove('show')">← back to page</span>
+</div>
+
+<footer>Made for Ajeesha &nbsp;·&nbsp; with everything</footer>
 
 <script>
-  // ── Petals ──
-  const petalEmojis = ['🌸','🌺','✿','🌹','🌷'];
-  const container = document.getElementById('petals');
-  for (let i = 0; i < 18; i++) {
-    const p = document.createElement('div');
-    p.className = 'petal';
-    p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDuration = (6 + Math.random() * 8) + 's';
-    p.style.animationDelay = (Math.random() * 10) + 's';
-    p.style.fontSize = (0.9 + Math.random() * 1) + 'rem';
-    container.appendChild(p);
+// ── Stars ──
+(function(){
+  const c=document.getElementById('stars');
+  const ctx=c.getContext('2d');
+  let stars=[];
+  function resize(){
+    c.width=innerWidth;c.height=innerHeight;
+    stars=Array.from({length:160},()=>({
+      x:Math.random()*c.width,
+      y:Math.random()*c.height,
+      r:Math.random()*1.2+.2,
+      o:Math.random()*.6+.1,
+      sp:Math.random()*.0003+.0001
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    stars.forEach(s=>{
+      s.o+=s.sp;if(s.o>0.7||s.o<0.1)s.sp*=-1;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${s.o})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  resize();draw();
+  window.addEventListener('resize',resize);
+})();
+
+// ── Confetti ──
+function burst(){
+  const syms=['✦','★','✸','◆','●','♥'];
+  const colors=['#ff2566','#ff6b9d','#ffffff','#ffaacc','#ff88bb'];
+  for(let i=0;i<50;i++){
+    const el=document.createElement('div');
+    const size=Math.random()*12+6;
+    el.style.cssText=`
+      position:fixed;pointer-events:none;z-index:9999;
+      left:${Math.random()*100}vw;top:${Math.random()*60+10}vh;
+      font-size:${size}px;color:${colors[Math.floor(Math.random()*colors.length)]};
+      animation:cburst ${.8+Math.random()*.8}s ease-out forwards;
+    `;
+    el.textContent=syms[Math.floor(Math.random()*syms.length)];
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),1600);
+  }
+}
+const st=document.createElement('style');
+st.textContent=`@keyframes cburst{
+  0%{opacity:1;transform:scale(0) translate(0,0) rotate(0deg)}
+  60%{opacity:1;transform:scale(1.5) translate(${Math.random()>0.5?'':'-'}${Math.floor(Math.random()*60)+20}px,-${Math.floor(Math.random()*80)+30}px) rotate(${Math.floor(Math.random()*360)}deg)}
+  100%{opacity:0;transform:scale(1) translate(${Math.random()>0.5?'':'-'}${Math.floor(Math.random()*80)+20}px,-${Math.floor(Math.random()*120)+60}px) rotate(${Math.floor(Math.random()*720)}deg)}
+}`;
+document.head.appendChild(st);
+
+// ── State ──
+let selectedAnswer=null,selectedDate=null;
+
+function pick(ans,btn){
+  selectedAnswer=ans;
+  document.querySelectorAll('.ans-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  const dp=document.getElementById('datePicker');
+  const sb=document.getElementById('sendBtn');
+  const sn=document.getElementById('sendNote');
+
+  if(ans==='yes'||ans==='maybe'){
+    dp.classList.add('show');
+  } else {
+    dp.classList.remove('show');
+    selectedDate=null;
+    document.querySelectorAll('.d-card').forEach(c=>c.classList.remove('selected'));
+  }
+  sb.classList.add('show');
+  sn.classList.add('show');
+}
+
+function pickDate(el){
+  document.querySelectorAll('.d-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedDate=el.querySelector('h4').textContent;
+}
+
+// ── Send — reliable mailto ──
+function sendAnswer(){
+  if(!selectedAnswer) return;
+  const note=(document.getElementById('noteBox').value||'').trim();
+  let subj,body;
+
+  if(selectedAnswer==='yes'){
+    subj='YES 💋 — My Answer for You, Joseph';
+    body='Hi Joseph,\n\nMy answer is: YES! 💋\n\n'
+      +(selectedDate?'For our first date, I pick: '+selectedDate+'\n\n':'')
+      +(note?'A little note from me: '+note+'\n\n':'')
+      +'— Ajeesha';
+  } else if(selectedAnswer==='maybe'){
+    subj='Maybe… 🌸 — My Answer for You, Joseph';
+    body='Hi Joseph,\n\nMy answer is: Maybe… 🌸\n\nI need a little more time, but I wanted you to know I really appreciated this.\n\n'
+      +(selectedDate?'If things go well, '+selectedDate+' sounds lovely.\n\n':'')
+      +(note?note+'\n\n':'')
+      +'— Ajeesha';
+  } else {
+    subj='My Answer — Joseph';
+    body='Hi Joseph,\n\nThis meant a lot. My answer is not yet — but thank you for doing this, genuinely.\n\n'
+      +(note?note+'\n\n':'')
+      +'— Ajeesha';
   }
 
-  // ── Date card selection ──
-  let selectedDate = null;
-  function selectDate(el) {
-    document.querySelectorAll('.date-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedDate = el.querySelector('h3').textContent;
+  // reliable email trigger
+  const a=document.createElement('a');
+  a.href='mailto:bepojoseph9@gmail.com'
+    +'?subject='+encodeURIComponent(subj)
+    +'&body='+encodeURIComponent(body);
+  a.style.display='none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(()=>document.body.removeChild(a),200);
+
+  // overlay
+  const big=document.getElementById('overlayBig');
+  const msg=document.getElementById('overlayMsg');
+  if(selectedAnswer==='yes'){
+    big.textContent='SHE SAID YES.';
+    msg.textContent='You just made everything. Check your inbox. 💋';
+    setTimeout(burst,300);setTimeout(burst,700);setTimeout(burst,1100);
+  } else if(selectedAnswer==='maybe'){
+    big.textContent='A MAYBE IS A START.';
+    msg.textContent="Thank you for being honest. I'll wait. 🌸";
+  } else {
+    big.textContent='RESPECT.';
+    msg.textContent="Thank you for taking the time. That took courage too.";
   }
-
-  // ── Submit ──
-  function submitForm() {
-    const answer = document.getElementById('yourName').value.trim();
-    const ty = document.getElementById('thankyou');
-    const msg = document.getElementById('thankyouMsg');
-
-    const lc = answer.toLowerCase();
-    if (lc.includes('no') || lc === 'n') {
-      msg.textContent = "Okay, I respect it! But the door's always open. 🌸";
-    } else if (selectedDate) {
-      msg.textContent = `${selectedDate} it is! I'll make sure it's a day worth remembering. 💕`;
-    } else {
-      msg.textContent = "Can't wait to make this happen. I'll reach out soon! 💕";
-    }
-
-    ty.classList.add('show');
-    spawnConfetti();
-  }
-
-  // ── Simple confetti burst ──
-  function spawnConfetti() {
-    const ty = document.getElementById('thankyou');
-    const symbols = ['🌸','✨','💕','🌺','💫','🎀'];
-    for (let i = 0; i < 30; i++) {
-      const c = document.createElement('div');
-      c.style.cssText = `
-        position:fixed;
-        left:${Math.random()*100}vw;
-        top:${Math.random()*100}vh;
-        font-size:${1+Math.random()*1.5}rem;
-        pointer-events:none;
-        animation: fadePop 1.5s ease forwards;
-        z-index:1000;
-      `;
-      c.textContent = symbols[Math.floor(Math.random()*symbols.length)];
-      document.body.appendChild(c);
-      setTimeout(() => c.remove(), 1600);
-    }
-  }
-
-  // CSS for confetti animation injected once
-  const st = document.createElement('style');
-  st.textContent = `@keyframes fadePop {
-    0%   { opacity:1; transform: scale(0) translateY(0); }
-    60%  { opacity:1; transform: scale(1.4) translateY(-20px); }
-    100% { opacity:0; transform: scale(1) translateY(-60px); }
-  }`;
-  document.head.appendChild(st);
-
-  // ── Fade-in on scroll ──
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  setTimeout(()=>document.getElementById('overlay').classList.add('show'),500);
+}
 </script>
 </body>
 </html>
