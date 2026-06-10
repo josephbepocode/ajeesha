@@ -6,6 +6,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Ajeesha 💋</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('yqfpuo0QFdvM9DnV0');</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -441,7 +443,7 @@ footer{
     </div>
 
     <button class="send-btn" id="sendBtn" onclick="sendAnswer()">SEND MY ANSWER →</button>
-    <p class="send-note" id="sendNote">Opens your email app — pre-written and ready to send ✉️</p>
+    <p class="send-note" id="sendNote">Sends directly to Joseph — no email app needed ✉️</p>
   </div>
 </div>
 
@@ -540,9 +542,11 @@ function pickDate(el){
   selectedDate=el.querySelector('h4').textContent;
 }
 
-// ── Send — reliable mailto ──
+// ── Send via EmailJS ──
 function sendAnswer(){
   if(!selectedAnswer) return;
+
+  const btn=document.getElementById('sendBtn');
   const note=(document.getElementById('noteBox').value||'').trim();
   let subj,body;
 
@@ -565,31 +569,39 @@ function sendAnswer(){
       +'— Ajeesha';
   }
 
-  // reliable email trigger
-  const a=document.createElement('a');
-  a.href='mailto:bepojoseph9@gmail.com'
-    +'?subject='+encodeURIComponent(subj)
-    +'&body='+encodeURIComponent(body);
-  a.style.display='none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(()=>document.body.removeChild(a),200);
+  // disable button while sending
+  btn.textContent='SENDING…';
+  btn.style.opacity='.6';
+  btn.style.pointerEvents='none';
 
-  // overlay
-  const big=document.getElementById('overlayBig');
-  const msg=document.getElementById('overlayMsg');
-  if(selectedAnswer==='yes'){
-    big.textContent='SHE SAID YES.';
-    msg.textContent='You just made everything. Check your inbox. 💋';
-    setTimeout(burst,300);setTimeout(burst,700);setTimeout(burst,1100);
-  } else if(selectedAnswer==='maybe'){
-    big.textContent='A MAYBE IS A START.';
-    msg.textContent="Thank you for being honest. I'll wait. 🌸";
-  } else {
-    big.textContent='RESPECT.';
-    msg.textContent="Thank you for taking the time. That took courage too.";
-  }
-  setTimeout(()=>document.getElementById('overlay').classList.add('show'),500);
+  emailjs.send('service_dgraaiw','template_b6kmus4',{
+    subject: subj,
+    body:    body,
+  })
+  .then(()=>{
+    // success — show overlay
+    const big=document.getElementById('overlayBig');
+    const msg=document.getElementById('overlayMsg');
+    if(selectedAnswer==='yes'){
+      big.textContent='SHE SAID YES.';
+      msg.textContent='Check your inbox, Joseph. 💋';
+      setTimeout(burst,300);setTimeout(burst,700);setTimeout(burst,1100);
+    } else if(selectedAnswer==='maybe'){
+      big.textContent='A MAYBE IS A START.';
+      msg.textContent="Thank you for being honest. I'll wait. 🌸";
+    } else {
+      big.textContent='RESPECT.';
+      msg.textContent='Thank you for taking the time. That took courage too.';
+    }
+    document.getElementById('overlay').classList.add('show');
+  })
+  .catch(err=>{
+    console.error('EmailJS error:',err);
+    btn.textContent='SEND MY ANSWER →';
+    btn.style.opacity='';
+    btn.style.pointerEvents='';
+    alert('Something went wrong sending — please try again.');
+  });
 }
 </script>
 </body>
